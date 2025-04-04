@@ -66,3 +66,19 @@ footer strong {
     color: cyan;
     text-shadow: 0px 0px 8px cyan;
 }
+button {
+    margin: 5px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.add {
+    background: green;
+    color: white;
+}
+
+.remove {
+    background: red;
+    color: white;
+}
