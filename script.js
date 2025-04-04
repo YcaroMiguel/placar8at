@@ -28,7 +28,7 @@ const alunos = [
     { nome: "Samuel Asafe", pontos: 0 },
     { nome: "Sury de França", pontos: 0 },
     { nome: "Thais Lopez", pontos: 0 },
-    { nome: "Ycaro Miguel", pontos: 0 }
+    { nome: "Ycaro Miguel", pontos: 10 }
 ];
 
 // Ordena por pontuação (do maior para o menor)
