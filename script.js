@@ -1,4 +1,5 @@
-const alunos = [
+// Lista de alunos com seus pontos iniciais
+let alunos = [
     { nome: "Aimê Laís", pontos: 0 },
     { nome: "Alanna Gabrielly", pontos: 0 },
     { nome: "Alice Feitosa", pontos: 0 },
@@ -28,32 +29,41 @@ const alunos = [
     { nome: "Samuel Asafe", pontos: 0 },
     { nome: "Sury de França", pontos: 0 },
     { nome: "Thais Lopez", pontos: 0 },
-    { nome: "Ycaro Miguel", pontos: 10 }
+    { nome: "Ycaro Miguel", pontos: 0 }
 ];
 
-// Ordena por pontuação (do maior para o menor)
-function atualizarRanking() {
-    const tabela = document.querySelector("#ranking tbody");
-    tabela.innerHTML = "";
+// Atualiza a tabela no HTML
+function atualizarTabela() {
+    let tabela = document.getElementById("ranking");
+    tabela.innerHTML = ""; // Limpa antes de recriar
 
-    alunos.sort((a, b) => b.pontos - a.pontos);
+    alunos.sort((a, b) => b.pontos - a.pontos); // Ordena por pontos
 
     alunos.forEach((aluno, index) => {
-        const tr = document.createElement("tr");
+        let linha = document.createElement("tr");
 
-        // Adiciona classe especial para Top 3
-        if (index === 0) tr.classList.add("top1");
-        else if (index === 1) tr.classList.add("top2");
-        else if (index === 2) tr.classList.add("top3");
-
-        tr.innerHTML = `
-            <td>${index + 1}º</td>
+        linha.innerHTML = `
             <td>${aluno.nome}</td>
             <td>${aluno.pontos}</td>
+            <td>
+                <button class="add" onclick="alterarPontos(${index}, 10)">+10</button>
+                <button class="add" onclick="alterarPontos(${index}, 20)">+20</button>
+                <button class="add" onclick="alterarPontos(${index}, 50)">+50</button>
+                <button class="remove" onclick="alterarPontos(${index}, -10)">-10</button>
+                <button class="remove" onclick="alterarPontos(${index}, -20)">-20</button>
+                <button class="remove" onclick="alterarPontos(${index}, -50)">-50</button>
+            </td>
         `;
-        tabela.appendChild(tr);
+
+        tabela.appendChild(linha);
     });
 }
 
-// Chama a função ao carregar a página
-atualizarRanking();
+// Modifica os pontos do aluno
+function alterarPontos(index, quantidade) {
+    alunos[index].pontos += quantidade;
+    atualizarTabela();
+}
+
+// Inicializa a tabela
+atualizarTabela();
