@@ -1,59 +1,42 @@
-const alunos = [
-    { nome: "Aimê Laís", pontos: 0 },
-    { nome: "Alanna Gabrielly", pontos: 0 },
-    { nome: "Alice Feitosa", pontos: 0 },
-    { nome: "Ana Clara", pontos: 0 },
-    { nome: "Ana Sophia", pontos: 0 },
-    { nome: "André Lucas", pontos: 0 },
-    { nome: "Ashira Giovanna", pontos: 0 },
-    { nome: "Bruna Vitória", pontos: 0 },
-    { nome: "Cesar Miguel", pontos: 0 },
-    { nome: "Elias Maia", pontos: 0 },
-    { nome: "Emanuelly Ester", pontos: 0 },
-    { nome: "Felipe de Melo", pontos: 10 },
-    { nome: "Gabriel Pinheiro", pontos: 0 },
-    { nome: "Hiel Alves", pontos: 12 },
-    { nome: "Isabelly Lins", pontos: 0 },
-    { nome: "João Lucas", pontos: 0 },
-    { nome: "Júlio Cezar", pontos: 0 },
-    { nome: "Kaira Vitória", pontos: 0 },
-    { nome: "Luiz Gabriel", pontos: 0 },
-    { nome: "Lyvia Emanuelly", pontos: 0 },
-    { nome: "Maria Alice", pontos: 0 },
-    { nome: "Maria Eduarda", pontos: 0 },
-    { nome: "Marya Luiza", pontos: 0 },
-    { nome: "Matheus Vitor", pontos: 0 },
-    { nome: "Pedro Henrique", pontos: 0 },
-    { nome: "Rebecca Silva", pontos: 0 },
-    { nome: "Samuel Asafe", pontos: 0 },
-    { nome: "Sury de França", pontos: 0 },
-    { nome: "Thais Lopez", pontos: 0 },
-    { nome: "Ycaro Miguel", pontos: 12 }
-];
+    function atualizarRanking() {
+      const tbody = document.getElementById("ranking-body");
+      const rows = Array.from(tbody.querySelectorAll("tr"));
 
-// Ordena por pontuação (do maior para o menor)
-function atualizarRanking() {
-    const tabela = document.querySelector("#ranking tbody");
-    tabela.innerHTML = "";
+      const dados = rows.map(row => {
+        const nome = row.children[1].textContent;
+        const pontos = parseInt(row.children[2].textContent);
+        return { nome, pontos };
+      });
 
-    alunos.sort((a, b) => b.pontos - a.pontos);
+      dados.sort((a, b) => b.pontos - a.pontos);
 
-    alunos.forEach((aluno, index) => {
+      tbody.innerHTML = "";
+
+      dados.forEach((aluno, index) => {
         const tr = document.createElement("tr");
 
-        // Adiciona classe especial para Top 3
-        if (index === 0) tr.classList.add("top1");
-        else if (index === 1) tr.classList.add("top2");
-        else if (index === 2) tr.classList.add("top3");
+        let rankClass = "";
+        let medalha = "";
+        if (index === 0) {
+          rankClass = "rank-1";
+          medalha = "🥇";
+        } else if (index === 1) {
+          rankClass = "rank-2";
+          medalha = "🥈";
+        } else if (index === 2) {
+          rankClass = "rank-3";
+          medalha = "🥉";
+        }
+
+        tr.className = rankClass;
 
         tr.innerHTML = `
-            <td>${index + 1}º</td>
-            <td>${aluno.nome}</td>
-            <td>${aluno.pontos}</td>
+          <td>${index + 1}</td>
+          <td>${medalha ? `<span class="medal">${medalha}</span>` : ""}${aluno.nome}</td>
+          <td>${aluno.pontos}</td>
         `;
-        tabela.appendChild(tr);
-    });
-}
+        tbody.appendChild(tr);
+      });
+    }
 
-// Chama a função ao carregar a página
-atualizarRanking();
+    window.onload = atualizarRanking;
