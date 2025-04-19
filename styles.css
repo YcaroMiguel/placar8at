@@ -78,6 +78,12 @@
       margin-right: 8px;
     }
 
+    .np-tag {
+      color: #ff9999;
+      font-style: italic;
+      font-size: 0.9em;
+    }
+
     footer {
       margin-top: 50px;
       font-size: 0.95rem;
