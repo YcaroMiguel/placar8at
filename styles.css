@@ -107,3 +107,12 @@ footer {
     margin-top: 20px;
   }
 }
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #333;
+}
