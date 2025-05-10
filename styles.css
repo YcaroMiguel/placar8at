@@ -1,91 +1,109 @@
-/* Importando fonte moderna */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color: #fff;
-      margin: 0;
-      padding: 30px 20px;
-      text-align: center;
-    }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  margin: 0;
+  padding: 30px 20px;
+  text-align: center;
+}
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
 
-    p.subtitulo {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-      color: #ccc;
-    }
+p.subtitulo {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: #ccc;
+}
 
-    table {
-      width: 90%;
-      max-width: 900px;
-      margin: auto;
-      border-collapse: collapse;
-      background-color: rgba(255, 255, 255, 0.05);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    }
+.tabela-container {
+  overflow-x: auto;
+}
 
-    th, td {
-      padding: 14px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      font-size: 1.05rem;
-    }
+table {
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+  border-collapse: collapse;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
 
-    th {
-      background-color: #1a2a3a;
-      font-weight: 700;
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
+th, td {
+  padding: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  font-size: 1rem;
+  white-space: nowrap;
+}
 
-    tr:nth-child(even) {
-      background-color: rgba(255,255,255,0.02);
-    }
+th {
+  background-color: #1a2a3a;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
-    tr:hover {
-      background-color: rgba(255,255,255,0.1);
-      transition: 0.3s;
-    }
+tr:nth-child(even) {
+  background-color: rgba(255,255,255,0.02);
+}
 
-    .rank-1 {
-      background-color: #ffd70033;
-      font-weight: bold;
-      color: #ffd700;
-    }
+tr:hover {
+  background-color: rgba(255,255,255,0.1);
+  transition: 0.3s;
+}
 
-    .rank-2 {
-      background-color: #c0c0c033;
-      font-weight: bold;
-      color: #c0c0c0;
-    }
+.rank-1 {
+  background-color: #ffd70033;
+  font-weight: bold;
+  color: #ffd700;
+}
 
-    .rank-3 {
-      background-color: #cd7f3233;
-      font-weight: bold;
-      color: #cd7f32;
-    }
+.rank-2 {
+  background-color: #c0c0c033;
+  font-weight: bold;
+  color: #c0c0c0;
+}
 
-    .medal {
-      font-size: 1.4rem;
-      margin-right: 8px;
-    }
+.rank-3 {
+  background-color: #cd7f3233;
+  font-weight: bold;
+  color: #cd7f32;
+}
 
-    .np-tag {
-      color: #ff9999;
-      font-style: italic;
-      font-size: 0.9em;
-    }
+.medal {
+  font-size: 1.4rem;
+  margin-right: 8px;
+}
 
-    footer {
-      margin-top: 50px;
-      font-size: 0.95rem;
-      color: #aaa;
-    }
+footer {
+  margin-top: 50px;
+  font-size: 0.95rem;
+  color: #aaa;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  th, td {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .medal {
+    font-size: 1.2rem;
+  }
+
+  .tabela-container {
+    margin-top: 20px;
+  }
+}
