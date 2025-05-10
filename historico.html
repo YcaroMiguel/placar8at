@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Histórico de Apontamentos</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    table {
+      margin-top: 20px;
+    }
+    td {
+      text-align: left;
+    }
+    .back {
+      display: inline-block;
+      margin-top: 30px;
+      color: #fff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="titulo-historico">Histórico</h1>
+  <div class="tabela-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Apontamento</th>
+        </tr>
+      </thead>
+      <tbody id="corpo-historico"></tbody>
+    </table>
+  </div>
+  <a href="index.html" class="back">Voltar ao Ranking</a>
+
+  <script>
+    const apontamentos = {
+      "Cesar Miguel": [
+        ["09/05/2025", "Atraso"],
+        ["09/05/2025", "Não respeitou o espelho de classe"]
+      ],
+      "Ycaro Miguel": [
+        ["09/05/2025", "Ajuda aos colegas"]
+      ],
+      "Thais Lopez": [
+        ["09/05/2025", "Ajuda aos colegas"]
+      ],
+      "Luiz Gabriel": [
+        ["09/05/2025", "Abaixou as calças do colega (Felipe)"],
+        ["09/05/2025", "Abriu um frasco de perfume dentro da sala"]
+      ],
+      "Isabelly Lins": [
+        ["09/05/2025", "Atrapalhando a aula e se batendo"],
+        ["09/05/2025", "Se batendo no chão"]
+      ],
+      "Sury de França": [
+        ["09/05/2025", "Atrapalhando a aula e se batendo"],
+        ["09/05/2025", "Brincando na aula de geografia"]
+      ],
+      "Maria Alice": [
+        ["09/05/2025", "Conversando e gritando em sala de aula"]
+      ],
+      "Samuel": [
+        ["09/05/2025", "Conversando e gritando em sala de aula"],
+        ["09/05/2025", "Brincando na aula de geografia"]
+      ],
+      "Matheus Vitor": [
+        ["09/05/2025", "Jogou um caderno na Maria Alice"],
+        ["09/05/2025", "Não respeitou o espelho de classe"],
+        ["09/05/2025", "Brincando na aula de geografia"],
+        ["09/05/2025", "Conversando e gritando em sala de aula"]
+      ],
+      "Lyvia Emanuelly": [
+        ["09/05/2025", "Conversando e gritando em sala de aula"],
+        ["09/05/2025", "Brincando na aula de geografia"]
+      ],
+      "Ashira Giovanna": [
+        ["09/05/2025", "Não respeitou o espelho de classe"]
+      ],
+      "André Lucas": [
+        ["09/05/2025", "Não respeitou o espelho de classe"],
+        ["09/05/2025", "Brincando na aula de geografia"]
+      ],
+      "Ana Sophia": [
+        ["09/05/2025", "Se batendo no chão"]
+      ],
+      "Ana Clara": [
+        ["09/05/2025", "Brincando na aula de geografia"]
+      ]
+    };
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const aluno = urlParams.get("aluno");
+    const corpo = document.getElementById("corpo-historico");
+    document.getElementById("titulo-historico").textContent = `Histórico de ${aluno}`;
+
+    if (apontamentos[aluno]) {
+      apontamentos[aluno].forEach(([data, texto]) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td>${data}</td><td>${texto}</td>`;
+        corpo.appendChild(tr);
+      });
+    } else {
+      corpo.innerHTML = `<tr><td colspan="2">Sem apontamentos registrados.</td></tr>`;
+    }
+  </script>
+</body>
+</html>
